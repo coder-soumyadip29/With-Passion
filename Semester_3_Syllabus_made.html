@@ -1,0 +1,2031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AIML 3rd Semester Syllabus | 2nd Year</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#08101e;--surface:#0f1829;--card:#152035;--card2:#1a2840;
+  --border:#1e3050;--border2:#243860;
+  --accent:#6366f1;--a2:#22d3ee;--a3:#f59e0b;--a4:#10b981;--a5:#f43f5e;--a6:#a855f7;
+  --star:#facc15;--text:#e2e8f0;--muted:#7a90b3;--radius:14px;
+  --glow:rgba(99,102,241,.18);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Space Grotesk',sans-serif;line-height:1.65;min-height:100vh;}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:var(--surface);}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px;}
+
+/* ── TOPBAR ── */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:200;height:56px;
+  background:rgba(8,16,30,.88);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;gap:1rem;}
+.tb-brand{display:flex;align-items:center;gap:.6rem;flex-shrink:0;}
+.tb-dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--a2));box-shadow:0 0 8px var(--accent);}
+.tb-name{font-family:'JetBrains Mono',monospace;font-size:.78rem;font-weight:600;color:var(--a2);letter-spacing:.06em;}
+.tb-pills{display:flex;gap:.4rem;flex-wrap:wrap;}
+.tp{padding:.28rem .72rem;border-radius:20px;font-size:.68rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--muted);transition:all .18s;font-family:'Space Grotesk',sans-serif;}
+.tp:hover,.tp.on{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 0 12px rgba(99,102,241,.4);}
+.tb-right{display:flex;align-items:center;gap:.6rem;flex-shrink:0;}
+.progress-wrap{display:flex;align-items:center;gap:.5rem;}
+.progress-label{font-size:.65rem;color:var(--muted);font-family:'JetBrains Mono',monospace;white-space:nowrap;}
+.progress-bar-bg{width:90px;height:5px;background:var(--border);border-radius:3px;overflow:hidden;}
+.progress-bar-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--a2));border-radius:3px;transition:width .4s;}
+
+/* ── HERO ── */
+.hero{padding:5.5rem 1.5rem 2.5rem;text-align:center;position:relative;overflow:hidden;}
+.hero-grid{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(99,102,241,.04) 39px,rgba(99,102,241,.04) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(99,102,241,.04) 39px,rgba(99,102,241,.04) 40px);pointer-events:none;}
+.hero-glow{position:absolute;top:0;left:50%;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(ellipse at 50% 0%,rgba(99,102,241,.22) 0%,transparent 65%);pointer-events:none;}
+.hero-inner{position:relative;z-index:1;}
+.badge-row{display:flex;justify-content:center;gap:.5rem;margin-bottom:1.2rem;flex-wrap:wrap;}
+.hero-badge{display:inline-flex;align-items:center;gap:.4rem;padding:.3rem .9rem;border-radius:20px;font-size:.7rem;font-weight:600;letter-spacing:.06em;font-family:'JetBrains Mono',monospace;}
+.hb1{background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.35);color:var(--accent);}
+.hb2{background:rgba(34,211,238,.08);border:1px solid rgba(34,211,238,.3);color:var(--a2);}
+.hb3{background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.3);color:var(--a4);}
+.hero h1{font-size:clamp(1.9rem,5vw,3rem);font-weight:700;line-height:1.15;margin-bottom:.8rem;}
+.hero h1 .g1{background:linear-gradient(135deg,var(--accent),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero h1 .g2{background:linear-gradient(135deg,var(--a2),var(--a4));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero-sub{color:var(--muted);font-size:.95rem;max-width:500px;margin:0 auto 2rem;}
+
+/* stats */
+.stats-row{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:2rem;}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:.7rem 1.2rem;text-align:center;min-width:90px;}
+.stat-val{font-size:1.5rem;font-weight:700;font-family:'JetBrains Mono',monospace;line-height:1;}
+.stat-lbl{font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-top:.25rem;}
+
+/* ── SEARCH + CONTROLS ── */
+.search-zone{max-width:900px;margin:0 auto;padding:0 1.5rem 2rem;}
+.search-wrap{position:relative;margin-bottom:1rem;}
+.search-wrap input{width:100%;background:var(--card);border:1px solid var(--border);color:var(--text);padding:.75rem 1rem .75rem 2.8rem;border-radius:12px;font-size:.88rem;font-family:'Space Grotesk',sans-serif;outline:none;transition:border-color .2s,box-shadow .2s;}
+.search-wrap input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(99,102,241,.12);}
+.search-wrap input::placeholder{color:var(--muted);}
+.s-icon{position:absolute;left:.9rem;top:50%;transform:translateY(-50%);font-size:1rem;pointer-events:none;}
+.controls-row{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;}
+.cbtn{padding:.38rem .85rem;border-radius:8px;font-size:.73rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:'Space Grotesk',sans-serif;transition:all .18s;}
+.cbtn:hover{background:var(--accent);border-color:var(--accent);color:#fff;}
+.cbtn.pri{background:var(--accent);border-color:var(--accent);color:#fff;}
+.legend{display:flex;gap:.8rem;margin-left:auto;flex-wrap:wrap;align-items:center;font-size:.68rem;color:var(--muted);}
+.li{display:flex;align-items:center;gap:.3rem;}
+
+/* ── LAYOUT ── */
+.main{max-width:1240px;margin:0 auto;padding:0 1.5rem 4rem;}
+.sec-head{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;display:flex;align-items:center;gap:.6rem;}
+.sec-head::after{content:'';flex:1;height:1px;background:var(--border);}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:1.1rem;margin-bottom:2.5rem;}
+
+/* ── SUBJECT CARD ── */
+.sc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:transform .22s,border-color .22s,box-shadow .22s;cursor:pointer;}
+.sc:hover{transform:translateY(-2px);border-color:var(--border2);box-shadow:0 8px 32px rgba(0,0,0,.4);}
+.sc.open{border-color:var(--accent);box-shadow:0 0 0 1px rgba(99,102,241,.2),0 8px 32px rgba(0,0,0,.4);}
+.sc-hd{padding:1.15rem 1.15rem .9rem;display:flex;align-items:flex-start;justify-content:space-between;gap:.8rem;}
+.sc-hl{flex:1;}
+.sc-code{font-size:.66rem;font-family:'JetBrains Mono',monospace;letter-spacing:.06em;font-weight:600;margin-bottom:.3rem;}
+.sc-name{font-size:.98rem;font-weight:700;line-height:1.3;}
+.sc-meta{display:flex;gap:.4rem;margin-top:.55rem;flex-wrap:wrap;}
+.bg{padding:.18rem .5rem;border-radius:5px;font-size:.62rem;font-weight:700;letter-spacing:.03em;}
+.bg-cr{background:rgba(99,102,241,.13);color:#818cf8;border:1px solid rgba(99,102,241,.28);}
+.bg-th{background:rgba(34,211,238,.09);color:#67e8f9;border:1px solid rgba(34,211,238,.25);}
+.bg-lb{background:rgba(16,185,129,.09);color:#34d399;border:1px solid rgba(16,185,129,.25);}
+.bg-sk{background:rgba(245,158,11,.09);color:#fcd34d;border:1px solid rgba(245,158,11,.25);}
+.bg-mi{background:rgba(168,85,247,.09);color:#c084fc;border:1px solid rgba(168,85,247,.25);}
+.chev{width:24px;height:24px;border-radius:50%;background:var(--surface);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .25s,background .2s;font-size:.7rem;color:var(--muted);}
+.sc.open .chev{transform:rotate(180deg);background:var(--accent);color:#fff;}
+
+/* ── CARD BODY ── */
+.sc-body{max-height:0;overflow:hidden;transition:max-height .42s cubic-bezier(.4,0,.2,1);}
+.sc.open .sc-body{max-height:4000px;}
+.sc-bi{padding:0 1.15rem 1.15rem;border-top:1px solid var(--border);}
+.prereq{margin:.8rem 0 .9rem;background:rgba(34,211,238,.05);border-left:3px solid var(--a2);padding:.45rem .75rem;border-radius:0 7px 7px 0;font-size:.76rem;color:var(--muted);}
+.prereq strong{color:var(--a2);}
+
+/* ── MODULES ── */
+.mod-lbl{font-size:.64rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);margin:.9rem 0 .55rem;display:flex;align-items:center;gap:.4rem;}
+.mod{background:var(--surface);border:1px solid var(--border);border-radius:9px;margin-bottom:.5rem;overflow:hidden;}
+.mod-hd{padding:.6rem .85rem;display:flex;align-items:center;gap:.65rem;cursor:pointer;user-select:none;}
+.mod-hd:hover{background:rgba(99,102,241,.05);}
+.mod-num{width:25px;height:25px;border-radius:6px;background:var(--card2);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--accent);flex-shrink:0;}
+.mod-title{flex:1;font-size:.8rem;font-weight:600;line-height:1.35;}
+.mod-hr{font-size:.63rem;font-family:'JetBrains Mono',monospace;color:var(--muted);flex-shrink:0;background:var(--card);padding:.1rem .35rem;border-radius:4px;border:1px solid var(--border);}
+.mod-cv{font-size:.62rem;color:var(--muted);transition:transform .2s;flex-shrink:0;}
+.mod.open .mod-cv{transform:rotate(180deg);}
+.mod-body{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+.mod.open .mod-body{max-height:1200px;}
+.topics{padding:.4rem .85rem .8rem;}
+.ti{display:flex;align-items:flex-start;gap:.55rem;padding:.28rem 0;font-size:.77rem;line-height:1.5;color:var(--muted);}
+.ti .dot{width:5px;height:5px;border-radius:50%;background:var(--border2);margin-top:.52rem;flex-shrink:0;}
+.ti.imp{color:var(--text);}
+.ti.imp .dot{background:var(--accent);}
+.star{color:var(--star);font-size:.73rem;flex-shrink:0;margin-top:.12rem;filter:drop-shadow(0 0 4px rgba(250,204,21,.5));}
+.mtag{background:rgba(250,204,21,.11);border:1px solid rgba(250,204,21,.3);color:var(--star);font-size:.56rem;font-weight:700;padding:.08rem .3rem;border-radius:4px;letter-spacing:.05em;flex-shrink:0;margin-top:.12rem;}
+.htag{background:rgba(244,63,94,.1);border:1px solid rgba(244,63,94,.25);color:#fb7185;font-size:.56rem;font-weight:700;padding:.08rem .3rem;border-radius:4px;letter-spacing:.05em;flex-shrink:0;margin-top:.12rem;}
+
+/* ── BOOKS ── */
+.bk-sec{margin-top:1rem;padding-top:.9rem;border-top:1px solid var(--border);}
+.bk-lbl{font-size:.64rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;display:flex;align-items:center;gap:.4rem;}
+.bk{font-size:.74rem;color:var(--muted);padding:.25rem 0 .25rem .7rem;border-left:2px solid var(--border2);margin-bottom:.3rem;line-height:1.45;}
+.bk.pri{border-color:var(--accent);color:var(--text);}
+
+/* ── QUICK NAV ── */
+.qnav{position:fixed;right:1.2rem;top:50%;transform:translateY(-50%);z-index:150;display:flex;flex-direction:column;gap:.4rem;}
+.qn{width:34px;height:34px;border-radius:50%;background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.65rem;cursor:pointer;transition:all .18s;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+.qn:hover{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 0 12px rgba(99,102,241,.4);}
+.qn title{display:none;}
+
+/* ── EXAM TIPS ── */
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.9rem;margin-bottom:2.5rem;}
+.tip-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1rem;position:relative;overflow:hidden;}
+.tip-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.tip-card.t1::before{background:linear-gradient(90deg,var(--accent),var(--a2));}
+.tip-card.t2::before{background:linear-gradient(90deg,var(--a4),var(--a2));}
+.tip-card.t3::before{background:linear-gradient(90deg,var(--a3),var(--a5));}
+.tip-card.t4::before{background:linear-gradient(90deg,var(--a6),var(--accent));}
+.tip-icon{font-size:1.4rem;margin-bottom:.5rem;}
+.tip-title{font-size:.82rem;font-weight:700;margin-bottom:.35rem;}
+.tip-body{font-size:.74rem;color:var(--muted);line-height:1.5;}
+
+/* ── CHECKLIST ── */
+.checklist{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.6rem;margin-bottom:2.5rem;}
+.chk-item{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--border);border-radius:9px;padding:.55rem .85rem;cursor:pointer;transition:all .18s;}
+.chk-item:hover{border-color:var(--border2);}
+.chk-item.done{border-color:var(--a4);background:rgba(16,185,129,.06);}
+.chk-box{width:18px;height:18px;border:2px solid var(--border2);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .18s;}
+.chk-item.done .chk-box{background:var(--a4);border-color:var(--a4);}
+.chk-text{font-size:.76rem;font-weight:500;}
+.chk-item.done .chk-text{color:var(--muted);text-decoration:line-through;}
+
+/* ── NO RESULTS ── */
+.no-res{text-align:center;padding:3rem;color:var(--muted);display:none;}
+.no-res-icon{font-size:2.5rem;margin-bottom:.75rem;}
+
+/* ── ANIMATIONS ── */
+.sc{opacity:0;animation:fadeUp .4s forwards;}
+@keyframes fadeUp{to{opacity:1;transform:none;}}
+.sc:nth-child(1){animation-delay:.04s}
+.sc:nth-child(2){animation-delay:.08s}
+.sc:nth-child(3){animation-delay:.12s}
+.sc:nth-child(4){animation-delay:.16s}
+.sc:nth-child(5){animation-delay:.20s}
+.sc:nth-child(6){animation-delay:.24s}
+.sc:nth-child(7){animation-delay:.28s}
+.sc:nth-child(8){animation-delay:.32s}
+.sc:nth-child(9){animation-delay:.36s}
+.sc:nth-child(10){animation-delay:.40s}
+
+mark{background:rgba(99,102,241,.28);color:#fff;border-radius:2px;padding:0 1px;}
+
+/* ── FOOTER ── */
+footer{text-align:center;padding:1.5rem;color:var(--muted);font-size:.72rem;border-top:1px solid var(--border);}
+
+/* ── RESPONSIVE ── */
+/* ══════════════════════════════════════
+   WATERMARK — fixed bottom-right
+══════════════════════════════════════ */
+.watermark{
+  position:fixed;right:14px;bottom:14px;z-index:500;
+  font-size:.6rem;color:rgba(255,255,255,.13);
+  font-family:'JetBrains Mono',monospace;
+  letter-spacing:.07em;pointer-events:none;
+  user-select:none;white-space:nowrap;
+  transform:rotate(-0deg);
+  transition:color .3s;
+}
+.watermark:hover{color:rgba(255,255,255,.38);}
+
+/* ══════════════════════════════════════
+   FULL MOBILE RESPONSIVE — all sizes
+══════════════════════════════════════ */
+
+/* ── Large tablet & small desktop ── */
+@media(max-width:900px){
+  .grid{grid-template-columns:1fr;}
+  .tips-grid{grid-template-columns:repeat(2,1fr);}
+  .checklist{grid-template-columns:repeat(2,1fr);}
+  .main{padding:0 1rem 3rem;}
+  .search-zone{padding:0 1rem 1.5rem;}
+  .qnav{right:.6rem;}
+}
+
+/* ── Tablet ── */
+@media(max-width:768px){
+  /* topbar: hide pills, show only brand + progress */
+  .tb-pills{display:none;}
+  .tb-right{display:flex;}
+  .progress-bar-bg{width:70px;}
+  .progress-label{font-size:.6rem;}
+
+  /* hero */
+  .hero{padding:4.5rem 1rem 2rem;}
+  .hero h1{font-size:clamp(1.6rem,6vw,2.4rem);}
+  .hero-sub{font-size:.85rem;}
+  .stats-row{gap:.65rem;}
+  .stat{padding:.55rem .9rem;min-width:70px;}
+  .stat-val{font-size:1.25rem;}
+  .stat-lbl{font-size:.58rem;}
+
+  /* search + controls */
+  .controls-row{gap:.4rem;}
+  .cbtn{font-size:.68rem;padding:.32rem .65rem;}
+  .legend{display:none;}
+
+  /* layout */
+  .grid{grid-template-columns:1fr;}
+  .tips-grid{grid-template-columns:1fr;}
+  .checklist{grid-template-columns:1fr;}
+  .qnav{display:none;}
+
+  /* subject cards */
+  .sc-name{font-size:.9rem;}
+  .mod-title{font-size:.76rem;}
+  .ti{font-size:.74rem;}
+  .bk{font-size:.7rem;}
+  .tip-body{font-size:.72rem;}
+
+  /* landing page */
+  .land-ui{gap:.85rem;}
+  .land-stats{gap:1rem;}
+  .ls-val{font-size:1.4rem;}
+  .land-btn{padding:.7rem 1.8rem;font-size:.9rem;}
+  .scroll-hint{display:none;}
+}
+
+/* ── Mobile ── */
+@media(max-width:540px){
+  /* topbar slim */
+  .topbar{height:50px;padding:0 .9rem;}
+  .tb-name{font-size:.68rem;}
+  .tb-right{display:flex;}
+  .progress-bar-bg{width:55px;}
+  .progress-label{font-size:.58rem;}
+
+  /* hero */
+  .hero{padding:4rem .9rem 1.8rem;}
+  .hero h1{font-size:clamp(1.4rem,7vw,2rem);line-height:1.2;}
+  .hero-sub{font-size:.8rem;margin-bottom:1.5rem;}
+  .badge-row{gap:.35rem;}
+  .hero-badge{font-size:.62rem;padding:.25rem .7rem;}
+  .stats-row{gap:.5rem;}
+  .stat{padding:.45rem .75rem;min-width:62px;}
+  .stat-val{font-size:1.1rem;}
+  .stat-lbl{font-size:.55rem;}
+
+  /* search zone */
+  .search-zone{padding:0 .9rem 1.2rem;}
+  .search-wrap input{font-size:.82rem;padding:.65rem .9rem .65rem 2.4rem;}
+  .controls-row{gap:.35rem;}
+  .cbtn{font-size:.64rem;padding:.28rem .55rem;border-radius:6px;}
+
+  /* section heads */
+  .sec-head{font-size:.58rem;}
+
+  /* subject card */
+  .sc{border-radius:10px;}
+  .sc-hd{padding:.9rem .9rem .75rem;}
+  .sc-code{font-size:.6rem;}
+  .sc-name{font-size:.86rem;}
+  .sc-bi{padding:0 .9rem .9rem;}
+  .bg{font-size:.58rem;padding:.14rem .42rem;}
+  .chev{width:20px;height:20px;font-size:.62rem;}
+
+  /* modules */
+  .mod{border-radius:7px;}
+  .mod-hd{padding:.52rem .7rem;gap:.5rem;}
+  .mod-num{width:22px;height:22px;font-size:.6rem;border-radius:5px;}
+  .mod-title{font-size:.74rem;}
+  .mod-hr{font-size:.58rem;padding:.08rem .28rem;}
+  .topics{padding:.3rem .7rem .65rem;}
+  .ti{font-size:.72rem;gap:.45rem;}
+  .star{font-size:.68rem;}
+  .mtag,.htag{font-size:.5rem;padding:.06rem .25rem;}
+  .mod-lbl{font-size:.6rem;}
+  .prereq{font-size:.72rem;}
+
+  /* books */
+  .bk{font-size:.68rem;}
+  .bk-lbl{font-size:.6rem;}
+
+  /* tips */
+  .tips-grid{gap:.7rem;}
+  .tip-card{padding:.85rem;}
+  .tip-icon{font-size:1.2rem;}
+  .tip-title{font-size:.78rem;}
+  .tip-body{font-size:.7rem;}
+
+  /* checklist */
+  .checklist{gap:.45rem;}
+  .chk-item{padding:.45rem .7rem;border-radius:7px;}
+  .chk-text{font-size:.7rem;}
+  .chk-box{width:16px;height:16px;}
+
+  /* main */
+  .main{padding:0 .9rem 3rem;}
+
+  /* footer */
+  footer{font-size:.65rem;padding:1.2rem .9rem;line-height:1.6;}
+
+  /* landing page */
+  .land-ui{gap:.75rem;padding:0 1rem;}
+  .land-badge{font-size:.6rem;padding:.25rem .7rem;}
+  .land-dot{width:6px;height:6px;}
+  .land-title{font-size:clamp(1.6rem,9vw,2.5rem);}
+  .land-sub{font-size:.78rem;line-height:1.6;}
+  .land-stats{gap:.8rem;}
+  .ls{min-width:55px;}
+  .ls-val{font-size:1.3rem;}
+  .ls-lbl{font-size:.58rem;}
+  .land-btn{padding:.65rem 1.5rem;font-size:.85rem;}
+  .scroll-hint{display:none;}
+  .orb{filter:blur(40px);}
+
+  /* watermark smaller on mobile */
+  .watermark{font-size:.52rem;right:10px;bottom:10px;}
+}
+
+/* ── Very small phones ── */
+@media(max-width:380px){
+  .hero h1{font-size:1.3rem;}
+  .topbar{padding:0 .7rem;}
+  .tb-name{font-size:.62rem;}
+  .tb-right{display:none;}
+  .main{padding:0 .7rem 2.5rem;}
+  .search-zone{padding:0 .7rem 1rem;}
+  .sc-hd{padding:.8rem .8rem .65rem;}
+  .sc-bi{padding:0 .8rem .8rem;}
+  .mod-hd{padding:.45rem .6rem;}
+  .topics{padding:.25rem .6rem .55rem;}
+  .land-title{font-size:1.4rem;}
+  .land-stats{gap:.6rem;}
+  .ls-val{font-size:1.1rem;}
+  .land-btn{padding:.6rem 1.2rem;font-size:.8rem;}
+  .stats-row{gap:.4rem;}
+  .stat{padding:.4rem .6rem;min-width:55px;}
+  .stat-val{font-size:1rem;}
+}
+
+/* ── Touch: remove hover effects that feel sticky ── */
+@media(hover:none){
+  .sc:hover{transform:none;border-color:var(--border);}
+  .sc.open:hover{border-color:var(--accent);}
+  .cbtn:hover{background:transparent;color:var(--muted);border-color:var(--border);}
+  .cbtn.pri:hover{background:var(--accent);color:#fff;}
+  .land-btn:hover{transform:none;box-shadow:0 0 30px rgba(99,102,241,.5);}
+  .chk-item:hover{border-color:var(--border);}
+  .chk-item.done:hover{border-color:var(--a4);}
+  .mod-hd:hover{background:transparent;}
+}
+
+/* ══════════════════════════════════════════
+   LANDING PAGE — 3D MAGICAL STUDY UNIVERSE
+══════════════════════════════════════════ */
+
+/* overlay that covers full viewport */
+#landing{
+  position:fixed;inset:0;z-index:9999;
+  background:#04080f;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  overflow:hidden;
+  transition:opacity .9s ease,transform .9s ease;
+}
+#landing.hide{opacity:0;transform:scale(1.06);pointer-events:none;}
+
+/* three.js canvas fills landing */
+#landing canvas{position:absolute;inset:0;width:100%!important;height:100%!important;}
+
+/* content overlay inside landing */
+.land-ui{
+  position:relative;z-index:10;
+  text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:1.1rem;
+  padding:0 1.5rem;
+  animation:landIn 1.4s cubic-bezier(.22,1,.36,1) both;
+}
+@keyframes landIn{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:none;}}
+
+/* floating badge */
+.land-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.35rem 1.1rem;border-radius:30px;
+  background:rgba(99,102,241,.12);
+  border:1px solid rgba(99,102,241,.4);
+  color:#a5b4fc;font-size:.72rem;font-weight:700;
+  letter-spacing:.1em;font-family:'JetBrains Mono',monospace;
+  animation:pulse2 3s ease-in-out infinite;
+}
+@keyframes pulse2{0%,100%{box-shadow:0 0 0 0 rgba(99,102,241,.3);}50%{box-shadow:0 0 0 8px rgba(99,102,241,.0);}}
+
+.land-dot{width:7px;height:7px;border-radius:50%;background:#6366f1;box-shadow:0 0 8px #6366f1;}
+
+/* big title */
+.land-title{
+  font-size:clamp(2.2rem,7vw,4.5rem);
+  font-weight:800;line-height:1.1;
+  background:linear-gradient(135deg,#e0e7ff 0%,#a5b4fc 30%,#67e8f9 60%,#6ee7b7 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  filter:drop-shadow(0 0 40px rgba(99,102,241,.4));
+}
+.land-title span{display:block;}
+
+/* subtitle */
+.land-sub{
+  color:#8896b3;font-size:clamp(.85rem,2vw,1.05rem);
+  max-width:480px;line-height:1.7;
+}
+.land-sub strong{color:#a5b4fc;}
+
+/* stats row */
+.land-stats{
+  display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center;
+  margin:.5rem 0;
+}
+.ls{text-align:center;}
+.ls-val{
+  font-size:1.8rem;font-weight:800;
+  font-family:'JetBrains Mono',monospace;
+  background:linear-gradient(135deg,#6366f1,#22d3ee);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.ls-lbl{font-size:.65rem;color:#4a5568;text-transform:uppercase;letter-spacing:.1em;margin-top:.15rem;}
+
+/* CTA button */
+.land-btn{
+  margin-top:.5rem;
+  padding:.85rem 2.5rem;
+  border-radius:50px;
+  background:linear-gradient(135deg,#6366f1,#22d3ee);
+  border:none;cursor:pointer;
+  font-size:1rem;font-weight:700;color:#fff;
+  font-family:'Space Grotesk',sans-serif;
+  letter-spacing:.03em;
+  position:relative;overflow:hidden;
+  transition:transform .2s,box-shadow .2s;
+  box-shadow:0 0 30px rgba(99,102,241,.5),0 0 60px rgba(34,211,238,.2);
+}
+.land-btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 0 50px rgba(99,102,241,.7),0 0 80px rgba(34,211,238,.3);}
+.land-btn::before{
+  content:'';position:absolute;top:-50%;left:-60%;width:40%;height:200%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);
+  transform:skewX(-20deg);
+  animation:shimmer 3s infinite;
+}
+@keyframes shimmer{0%{left:-60%;}100%{left:140%;}}
+
+/* scroll hint */
+.scroll-hint{
+  position:absolute;bottom:2rem;
+  display:flex;flex-direction:column;align-items:center;gap:.4rem;
+  color:#4a5568;font-size:.7rem;letter-spacing:.1em;
+  animation:bounce 2s infinite;z-index:10;
+}
+@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+.scroll-hint svg{opacity:.5;}
+
+/* floating orbs for non-JS fallback */
+.orb{
+  position:absolute;border-radius:50%;pointer-events:none;filter:blur(60px);
+  animation:orbFloat linear infinite;
+}
+@keyframes orbFloat{0%{transform:translate(0,0) rotate(0deg);}100%{transform:translate(var(--tx),var(--ty)) rotate(360deg);}}
+
+/* body lock while landing visible */
+body.locked{overflow:hidden;}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     3D MAGICAL LANDING PAGE
+══════════════════════════════════════ -->
+<div id="landing">
+  <!-- Three.js canvas injected here by JS -->
+
+  <!-- Fallback ambient orbs (CSS only) -->
+  <div class="orb" style="width:500px;height:500px;background:rgba(99,102,241,.12);top:-150px;left:-150px;--tx:60px;--ty:80px;animation-duration:25s;"></div>
+  <div class="orb" style="width:400px;height:400px;background:rgba(34,211,238,.08);bottom:-100px;right:-100px;--tx:-40px;--ty:-60px;animation-duration:20s;"></div>
+  <div class="orb" style="width:300px;height:300px;background:rgba(168,85,247,.07);top:50%;left:60%;--tx:-30px;--ty:40px;animation-duration:18s;"></div>
+
+  <!-- UI Content -->
+  <div class="land-ui">
+    <div class="land-badge"><div class="land-dot"></div>AIML · 2nd Year · 3rd Semester</div>
+
+    <div class="land-title">
+      <span>Knowledge</span>
+      <span>Universe 🌌</span>
+    </div>
+
+    <p class="land-sub">
+      Your complete <strong>Semester 3</strong> study companion.<br/>
+      10 subjects · detailed modules · important topics starred ⭐<br/>
+      <strong>Live search · Progress tracker · Exam tips</strong>
+    </p>
+
+    <div class="land-stats">
+      <div class="ls"><div class="ls-val" id="cnt1">0</div><div class="ls-lbl">Subjects</div></div>
+      <div class="ls"><div class="ls-val" id="cnt2">0</div><div class="ls-lbl">Credits</div></div>
+      <div class="ls"><div class="ls-val" id="cnt3">0</div><div class="ls-lbl">Modules</div></div>
+      <div class="ls"><div class="ls-val" id="cnt4">0</div><div class="ls-lbl">⭐ Topics</div></div>
+    </div>
+
+    <button class="land-btn" id="enterBtn" onclick="enterSyllabus()">
+      🚀 &nbsp;Enter Syllabus Universe
+    </button>
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="scroll-hint">
+    <svg width="20" height="28" viewBox="0 0 20 28" fill="none">
+      <rect x="1" y="1" width="18" height="26" rx="9" stroke="#6366f1" stroke-width="1.5"/>
+      <circle cx="10" cy="8" r="2.5" fill="#6366f1"><animate attributeName="cy" values="8;18;8" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0;1" dur="2s" repeatCount="indefinite"/></circle>
+    </svg>
+    SCROLL TO EXPLORE
+  </div>
+</div>
+
+<!-- ── TOPBAR ── -->
+<nav class="topbar">
+  <div class="tb-brand">
+    <div class="tb-dot"></div>
+    <span class="tb-name">AIML · 3RD SEM</span>
+  </div>
+  <div class="tb-pills">
+    <button class="tp on" onclick="filter('all',this)">All</button>
+    <button class="tp" onclick="filter('theory',this)">Theory</button>
+    <button class="tp" onclick="filter('lab',this)">Labs</button>
+    <button class="tp" onclick="filter('minor',this)">Minor</button>
+    <button class="tp" onclick="filter('skill',this)">Skill</button>
+  </div>
+  <div class="tb-right">
+    <div class="progress-wrap">
+      <span class="progress-label" id="pLabel">0/10 done</span>
+      <div class="progress-bar-bg"><div class="progress-bar-fill" id="pFill"></div></div>
+    </div>
+  </div>
+</nav>
+
+<!-- ── QUICK NAV ── -->
+<div class="qnav">
+  <div class="qn" onclick="scrollTo('#theory-sec')" title="Theory">📚</div>
+  <div class="qn" onclick="scrollTo('#labs-sec')" title="Labs">🔬</div>
+  <div class="qn" onclick="scrollTo('#tips-sec')" title="Tips">💡</div>
+  <div class="qn" onclick="scrollTo('#check-sec')" title="Checklist">✅</div>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="badge-row">
+      <span class="hero-badge hb1">📅 2nd Year · 3rd Semester</span>
+      <span class="hero-badge hb2">CSE · AIML · R-25</span>
+      <span class="hero-badge hb3">22.5 Total Credits</span>
+    </div>
+    <h1><span class="g1">Semester 3</span> Complete<br/><span class="g2">Syllabus Guide</span></h1>
+    <p class="hero-sub">All 10 subjects with detailed modules · Important topics starred ⭐ · Exam tips included</p>
+    <div class="stats-row">
+      <div class="stat"><div class="stat-val" style="color:#818cf8">5</div><div class="stat-lbl">Theory</div></div>
+      <div class="stat"><div class="stat-val" style="color:#34d399">5</div><div class="stat-lbl">Labs</div></div>
+      <div class="stat"><div class="stat-val" style="color:#67e8f9">22.5</div><div class="stat-lbl">Credits</div></div>
+      <div class="stat"><div class="stat-val" style="color:#fcd34d">180</div><div class="stat-lbl">Theory Hrs</div></div>
+      <div class="stat"><div class="stat-val" style="color:#f9a8d4">45</div><div class="stat-lbl">Lab Hrs</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SEARCH ── -->
+<div class="search-zone">
+  <div class="search-wrap">
+    <span class="s-icon">🔍</span>
+    <input type="text" id="sInput" placeholder="Search topics, subjects, modules... e.g. 'semaphore', 'JVM', 'BFS'"/>
+  </div>
+  <div class="controls-row">
+    <button class="cbtn pri" onclick="toggleAll(true)">⊞ Expand All</button>
+    <button class="cbtn" onclick="toggleAll(false)">⊟ Collapse All</button>
+    <button class="cbtn" onclick="expandImportant()">⭐ Show Important Only</button>
+    <div class="legend">
+      <div class="li"><span style="color:var(--star)">⭐</span> Important topic</div>
+      <div class="li"><span style="background:rgba(250,204,21,.11);border:1px solid rgba(250,204,21,.3);color:var(--star);font-size:.58rem;padding:.05rem .3rem;border-radius:3px;font-weight:700;">MUST</span> High priority</div>
+      <div class="li"><span style="background:rgba(244,63,94,.1);border:1px solid rgba(244,63,94,.25);color:#fb7185;font-size:.58rem;padding:.05rem .3rem;border-radius:3px;font-weight:700;">HOT</span> Exam hot topic</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── MAIN ── -->
+<div class="main">
+
+<!-- ═══════════════ THEORY ═══════════════ -->
+<p class="sec-head" id="theory-sec">📖 Theory Subjects</p>
+<div class="grid" id="theoryGrid">
+
+<!-- ═══ OS ═══ -->
+<div class="sc" data-type="theory" data-name="operating system am301 process scheduling memory management deadlock file disk">
+<div class="sc-hd" onclick="toggleCard(this.parentElement)">
+  <div class="sc-hl">
+    <div class="sc-code" style="color:#818cf8">AM301</div>
+    <div class="sc-name">Operating System</div>
+    <div class="sc-meta">
+      <span class="bg bg-cr">3 Credits</span>
+      <span class="bg bg-th">3L · 36 Hrs</span>
+    </div>
+  </div>
+  <div class="chev">▾</div>
+</div>
+<div class="sc-body"><div class="sc-bi">
+  <div class="prereq"><strong>Prerequisites:</strong> Computer Organization · Computer Architecture · Data Structures · Algorithms &amp; Programming</div>
+  <div class="mod-lbl">📦 Modules</div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">01</div>
+      <div class="mod-title">Introduction to Operating System</div>
+      <div class="mod-hr">3L</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Types of OS: Batch, Multiprogrammed, Time-Sharing, Real-Time, Distributed, Parallel</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Functionalities &amp; Evolution of OS</span></div>
+      <div class="ti"><div class="dot"></div><span>Structural Overview &amp; Protection &amp; Security Concepts</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">02</div>
+      <div class="mod-title">Processes, Threads &amp; CPU Scheduling</div>
+      <div class="mod-hr">9L</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Process States, PCB (Process Control Block), Process Scheduling</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>CPU Scheduling Algorithms: FCFS, SJF, SRTF, Round Robin, Priority</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="htag">HOT</span><span>Multilevel Queue &amp; Multilevel Feedback Queue Scheduling</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Threads: User-Level vs. Kernel-Level Threads, Benefits</span></div>
+      <div class="ti"><div class="dot"></div><span>Co-operating &amp; Independent Processes, Suspended Processes</span></div>
+      <div class="ti"><div class="dot"></div><span>Interaction between Processes and OS</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">03</div>
+      <div class="mod-title">Process Synchronization &amp; Deadlocks</div>
+      <div class="mod-hr">10L</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Critical Section Problem &amp; Synchronization Hardware</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Classical Problems: Producer-Consumer, Readers-Writer, Dining Philosophers</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Semaphores (Binary &amp; Counting) – Implementation</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="htag">HOT</span><span>Deadlock: Characterization (Conditions), Prevention, Avoidance (Banker's Algo)</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Deadlock Detection &amp; Recovery</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">04</div>
+      <div class="mod-title">Memory Management &amp; Virtual Memory</div>
+      <div class="mod-hr">6L</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Logical vs. Physical Address Space, Paging &amp; Segmentation</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>TLB (Translation Lookaside Buffer), Contiguous Memory Allocation</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="htag">HOT</span><span>Page Replacement Algorithms: FIFO, LRU, Optimal — Numericals</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Demand Paging, Thrashing &amp; Working Set Model</span></div>
+      <div class="ti"><div class="dot"></div><span>Swapping, Internal &amp; External Fragmentation</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">05</div>
+      <div class="mod-title">File Systems, Disk &amp; I/O Management</div>
+      <div class="mod-hr">8L</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Disk Scheduling: FCFS, SSTF, SCAN, C-SCAN, LOOK, C-LOOK — Numericals</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>File Allocation Methods: Contiguous, Linked, Indexed</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>UNIX File Structure &amp; Directory Structure</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Free Space Management (Bit Vector)</span></div>
+      <div class="ti"><div class="dot"></div><span>I/O Hardware: Polling, Interrupts, DMA, Caching, Buffering</span></div>
+      <div class="ti"><div class="dot"></div><span>Case Study: IPC via Message Passing, Monitors, Thread Models</span></div>
+    </div></div>
+  </div>
+
+  <div class="bk-sec">
+    <div class="bk-lbl">📖 Books</div>
+    <div class="bk pri">Silberschatz, Galvin &amp; Gagne — Operating System Concepts (Wiley) ← Most Important</div>
+    <div class="bk">Tanenbaum — Modern Operating Systems (Prentice Hall)</div>
+    <div class="bk">Stallings — Operating Systems (Prentice Hall)</div>
+  </div>
+</div></div>
+</div>
+
+<!-- ═══ DAA ═══ -->
+<div class="sc" data-type="theory" data-name="design analysis algorithm daa am302 divide conquer dynamic programming greedy backtracking graph NP">
+<div class="sc-hd" onclick="toggleCard(this.parentElement)">
+  <div class="sc-hl">
+    <div class="sc-code" style="color:#67e8f9">AM302</div>
+    <div class="sc-name">Design &amp; Analysis of Algorithm</div>
+    <div class="sc-meta">
+      <span class="bg bg-cr">3 Credits</span>
+      <span class="bg bg-th">3L · 36 Hrs</span>
+    </div>
+  </div>
+  <div class="chev">▾</div>
+</div>
+<div class="sc-body"><div class="sc-bi">
+  <div class="prereq"><strong>Prerequisites:</strong> Data Structures &amp; Basic Programming ability</div>
+  <div class="mod-lbl">📦 Modules</div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">01</div>
+      <div class="mod-title">Algorithm Development &amp; Complexity Analysis</div>
+      <div class="mod-hr">4L</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Time &amp; Space Complexity — Big-O, Ω, Θ Notations with Examples</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Asymptotic Analysis: Best, Average, Worst Case</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Stages of Algorithm Development: Design → Proof of Correctness</span></div>
+      <div class="ti"><div class="dot"></div><span>Recurrence Relations &amp; their Solution</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">02</div>
+      <div class="mod-title">Algorithm Design Techniques</div>
+      <div class="mod-hr">14L</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Divide &amp; Conquer: Merge Sort, Quick Sort, Strassen's Matrix Multiplication</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Greedy: Fractional Knapsack, Job Sequencing with Deadline, Prim's, Kruskal's (MST)</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Dynamic Programming: 0/1 Knapsack, Matrix Chain Multiplication, TSP</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="htag">HOT</span><span>Backtracking: N-Queens Problem, Knight's Tour</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Graph Coloring (Greedy), Brute Force: TSP</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">03</div>
+      <div class="mod-title">String Matching Algorithms</div>
+      <div class="mod-hr">3L</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>KMP (Knuth-Morris-Pratt) Algorithm — Failure Function</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Naive String Matching Algorithm &amp; Complexity</span></div>
+      <div class="ti"><div class="dot"></div><span>String Matching using Finite Automata</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">04</div>
+      <div class="mod-title">Graph Algorithms</div>
+      <div class="mod-hr">5L</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Single Source Shortest Path: Dijkstra's Algorithm (with numericals)</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>All Pair Shortest Path: Floyd-Warshall Algorithm</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Max Flow: Ford-Fulkerson Algorithm, Push Re-label</span></div>
+      <div class="ti"><div class="dot"></div><span>Minimum Cost Flow: Cycle Cancelling Algorithm</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">05</div>
+      <div class="mod-title">Complexity Classes (P vs NP)</div>
+      <div class="mod-hr">5L</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="htag">HOT</span><span>Class P, Class NP — Definitions &amp; Differences</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>NP-Completeness: Reducibility, SAT, 3-SAT</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Vertex Cover, Independent Set, Maximum Clique</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">06</div>
+      <div class="mod-title">Approximation &amp; Randomized Algorithms</div>
+      <div class="mod-hr">5L</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span>Approximation Algorithms: Set Covering, Vertex Cover, K-Center Clustering</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Randomized Algorithms: Hiring Problem, Global Minimum</span></div>
+      <div class="ti"><div class="dot"></div><span>Recent Trends in Algorithm Design</span></div>
+    </div></div>
+  </div>
+
+  <div class="bk-sec">
+    <div class="bk-lbl">📖 Books</div>
+    <div class="bk pri">Cormen, Leiserson, Rivest, Stein — Introduction to Algorithms (CLRS) ← Bible of Algorithms</div>
+    <div class="bk pri">Aho, Hopcroft, Ullman — Design and Analysis of Computer Algorithms</div>
+    <div class="bk">Kleinberg &amp; Tardos — Algorithm Design</div>
+  </div>
+</div></div>
+</div>
+
+<!-- ═══ OOP JAVA ═══ -->
+<div class="sc" data-type="theory" data-name="object oriented programming java am303 inheritance polymorphism exception multithreading applet">
+<div class="sc-hd" onclick="toggleCard(this.parentElement)">
+  <div class="sc-hl">
+    <div class="sc-code" style="color:#34d399">AM303</div>
+    <div class="sc-name">Object Oriented Programming using Java</div>
+    <div class="sc-meta">
+      <span class="bg bg-cr">3 Credits</span>
+      <span class="bg bg-th">3L · 36 Hrs</span>
+    </div>
+  </div>
+  <div class="chev">▾</div>
+</div>
+<div class="sc-body"><div class="sc-bi">
+  <div class="prereq"><strong>Prerequisites:</strong> Partial OOP using C++</div>
+  <div class="mod-lbl">📦 Modules</div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">01</div>
+      <div class="mod-title">OOP Concepts &amp; Java Introduction</div>
+      <div class="mod-hr">2L</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>OOA &amp; OOD: Encapsulation, Abstraction, Inheritance, Polymorphism</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Object Relationships: Generalization, Specialization, Aggregation, Composition</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Java vs. C++: Key Differences, JVM &amp; Bytecode Architecture</span></div>
+      <div class="ti"><div class="dot"></div><span>Meta-class, Links, Association</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">02</div>
+      <div class="mod-title">Java Basics — Core Fundamentals</div>
+      <div class="mod-hr">10L</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Data Types, Variables, Operators, Control Statements, Loops, Arrays</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Class &amp; Object Creation, Methods, Constructors (Default, Parameterized, Copy)</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="htag">HOT</span><span>Constructor &amp; Method Overloading, this keyword</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>finalize() &amp; Garbage Collection, Call by Value vs. Call by Reference</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Static Variables &amp; Methods, Nested &amp; Inner Classes</span></div>
+      <div class="ti"><div class="dot"></div><span>Pass Objects as Parameters, Methods Returning Objects</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">03</div>
+      <div class="mod-title">String Handling &amp; I/O</div>
+      <div class="mod-hr">5L</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>String Class Methods: charAt, compareTo, equals, indexOf, substring, length, valueOf</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>StringBuffer Methods: append, insert, delete, reverse, capacity</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Mutable vs. Immutable String — String Pool Concept</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>I/O: BufferedReader, Scanner Class, Command Line Arguments</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">04</div>
+      <div class="mod-title">Inheritance &amp; Java Packages</div>
+      <div class="mod-hr">8L</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Types of Inheritance: Single, Multi-level, Hierarchical + super &amp; final keywords</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Method Overriding, Dynamic Method Dispatch (Runtime Polymorphism)</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="htag">HOT</span><span>Abstract Classes &amp; Methods, Interfaces, Multiple Inheritance via Interface</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Java Packages: Creating, Importing — Access Modifiers (public, private, protected, default)</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">05</div>
+      <div class="mod-title">Exception Handling, Multithreading &amp; Applet</div>
+      <div class="mod-hr">11L</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Exception Handling: try-catch-finally, throw &amp; throws, Checked vs. Unchecked</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>User-Defined Exceptions, Exception Hierarchy</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Multithreading: Thread Lifecycle, Creating Threads (extends Thread / implements Runnable)</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="htag">HOT</span><span>Thread Methods: sleep, yield, join, wait, notify, suspend, resume</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Thread Synchronization, Thread Priorities, Deadlocks in Threads</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Applet Programming: Lifecycle, init/start/stop/destroy/paint, Parameter Passing</span></div>
+    </div></div>
+  </div>
+
+  <div class="bk-sec">
+    <div class="bk-lbl">📖 Books</div>
+    <div class="bk pri">Herbert Schildt — Java: The Complete Reference, 9th Ed. (TMH) ← Go-to Bible</div>
+    <div class="bk pri">E. Balagurusamy — Programming With Java: A Primer, 3rd Ed. (TMH)</div>
+  </div>
+</div></div>
+</div>
+
+<!-- ═══ DISCRETE MATHS ═══ -->
+<div class="sc" data-type="minor" data-name="discrete mathematics m am301 set theory graph lattice logic number theory algebra">
+<div class="sc-hd" onclick="toggleCard(this.parentElement)">
+  <div class="sc-hl">
+    <div class="sc-code" style="color:#c084fc">M(AM)301</div>
+    <div class="sc-name">Discrete Mathematics</div>
+    <div class="sc-meta">
+      <span class="bg bg-cr">3 Credits</span>
+      <span class="bg bg-mi">Minor · 3L · 36 Hrs</span>
+    </div>
+  </div>
+  <div class="chev">▾</div>
+</div>
+<div class="sc-body"><div class="sc-bi">
+  <div class="prereq"><strong>Prerequisites:</strong> 10+2 Set Theory, Algebra, Logic, Basic Proof Techniques</div>
+  <div class="mod-lbl">📦 Modules</div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">01</div>
+      <div class="mod-title">Set Theory: Relations, Lattices &amp; Combinatorics</div>
+      <div class="mod-hr">11L</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Types of Relations, Binary Relations, Equivalence &amp; Partial Order Relations</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Posets (Partially Ordered Sets) &amp; Lattices</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="htag">HOT</span><span>Principle of Inclusion-Exclusion, Pigeon Hole Principle — with Examples</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Generating Functions, Recurrence Relations with Constant Coefficients</span></div>
+      <div class="ti"><div class="dot"></div><span>Solution of Recurrence via Generating Function Method</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">02</div>
+      <div class="mod-title">Propositional Logic</div>
+      <div class="mod-hr">5L</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Logical Connectives, Well-Formed Formulas (WFF), Truth Tables</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Tautology, Contradiction, Logical Equivalence</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="htag">HOT</span><span>Normal Forms: DNF (Disjunctive) &amp; CNF (Conjunctive) — Conversion</span></div>
+      <div class="ti"><div class="dot"></div><span>Algebra of Propositions, Basics of Boolean Logic</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">03</div>
+      <div class="mod-title">Number Theory</div>
+      <div class="mod-hr">4L</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>GCD &amp; Euclidean Algorithm, Congruence &amp; Residue Classes</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Divisibility Theory, Fundamental Theorem of Arithmetic</span></div>
+      <div class="ti"><div class="dot"></div><span>Well-Ordering Principle, Prime &amp; Composite Numbers</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">04</div>
+      <div class="mod-title">Algebraic Structures</div>
+      <div class="mod-hr">8L</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Groups: Definition, Properties, Subgroups, Cyclic Groups, Order of Groups</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="htag">HOT</span><span>Cosets, Lagrange's Theorem, Normal Subgroups</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Permutation Groups &amp; Symmetric Groups</span></div>
+      <div class="ti"><div class="dot"></div><span>Definition of Rings &amp; Fields (Overview)</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">05</div>
+      <div class="mod-title">Graph Theory</div>
+      <div class="mod-hr">8L</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Graph Types: Bipartite, Complete, Regular, Complement, Connected, Directed</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Adjacency &amp; Incidence Matrices, Dijkstra's Algorithm</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="htag">HOT</span><span>Trees: Binary Tree, Spanning Tree, Minimal Spanning Tree (Kruskal's &amp; Prim's)</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Walk, Path, Circuit — Theorems on Trees</span></div>
+      <div class="ti"><div class="dot"></div><span>Weighted Graphs, Digraphs</span></div>
+    </div></div>
+  </div>
+
+  <div class="bk-sec">
+    <div class="bk-lbl">📖 Books</div>
+    <div class="bk pri">Rosen — Discrete Mathematics and its Applications (Tata McGraw-Hill) ← Best Reference</div>
+    <div class="bk pri">Chakraborty &amp; Sarkar — Discrete Mathematics (Oxford University Press)</div>
+    <div class="bk">Deo — Graph Theory with Applications to Engineering &amp; CS (Prentice Hall)</div>
+  </div>
+</div></div>
+</div>
+
+<!-- ═══ EEE ═══ -->
+<div class="sc" data-type="minor" data-name="fundamentals electrical electronics engineering ec am301 dc ac circuit transistor op-amp diode transformer">
+<div class="sc-hd" onclick="toggleCard(this.parentElement)">
+  <div class="sc-hl">
+    <div class="sc-code" style="color:#fcd34d">EC(AM)301</div>
+    <div class="sc-name">Fundamentals of Electrical &amp; Electronics Engineering</div>
+    <div class="sc-meta">
+      <span class="bg bg-cr">3 Credits</span>
+      <span class="bg bg-mi">Minor · 3L · 36 Hrs</span>
+    </div>
+  </div>
+  <div class="chev">▾</div>
+</div>
+<div class="sc-body"><div class="sc-bi">
+  <div class="prereq"><strong>Prerequisites:</strong> Basic 12th Physics &amp; Mathematics, Concept of electrical/electronic circuit components</div>
+  <div class="mod-lbl">📦 Modules</div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">01</div>
+      <div class="mod-title">Elementary Concepts of Electric Circuits</div>
+      <div class="mod-hr">10L</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>DC Circuits: Ohm's Law, KVL &amp; KCL — Numericals</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Nodal Analysis &amp; Mesh Analysis (independent sources, steady state)</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="htag">HOT</span><span>AC Circuits: RMS, Average Value, Peak Factor, Form Factor</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Impedance &amp; Phasor Diagram for RL, RC, RLC Circuits</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Real Power, Reactive Power, Apparent Power, Power Factor</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">02</div>
+      <div class="mod-title">Electrical Machines</div>
+      <div class="mod-hr">8L</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Transformer: EMF Equation, Equivalent Circuit, Losses, Efficiency</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>DC Machines: Working Principle of Motor &amp; Generator, Voltage Equation</span></div>
+      <div class="ti"><div class="dot"></div><span>BH Characteristics, Ideal vs. Practical Transformer, Classifications of DC Machines</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">03</div>
+      <div class="mod-title">Semiconductor Fundamentals</div>
+      <div class="mod-hr">3L</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span>Energy Band Diagram: Conductor vs. Insulator vs. Semiconductor</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Current Flow: Drift &amp; Diffusion Processes</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">04</div>
+      <div class="mod-title">PN Junction Diode</div>
+      <div class="mod-hr">6L</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>V-I Characteristics (Forward &amp; Reverse Bias)</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="htag">HOT</span><span>Diode Rectifiers: Half Wave &amp; Full Wave — Numericals</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Zener Diode: V-I Characteristics &amp; Avalanche vs. Zener Breakdown</span></div>
+      <div class="ti"><div class="dot"></div><span>Junction Resistances &amp; Capacitances</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">05</div>
+      <div class="mod-title">Bipolar Junction Transistors (BJT)</div>
+      <div class="mod-hr">4L</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>PNP &amp; NPN: Principle of Operation, Current Gains (CE, CB, CC)</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Input &amp; Output Characteristics (CE mode)</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Biasing: Fixed Bias, Collector-Base Bias, Voltage Divider Bias</span></div>
+      <div class="ti"><div class="dot"></div><span>Transistor as a Switch</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">06</div>
+      <div class="mod-title">Introduction to ICs &amp; Op-Amp (IC741)</div>
+      <div class="mod-hr">5L</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Op-Amp IC741: Inverting &amp; Non-Inverting Amplifier Circuits</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="htag">HOT</span><span>Op-Amp as Adder, Subtractor, Differentiator, Integrator, Comparator</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>IC741 Pin Configuration &amp; Characteristics</span></div>
+      <div class="ti"><div class="dot"></div><span>IC Classifications: Advantages &amp; Disadvantages</span></div>
+    </div></div>
+  </div>
+
+  <div class="bk-sec">
+    <div class="bk-lbl">📖 Books</div>
+    <div class="bk pri">Kothari &amp; Nagrath — Basic Electrical Engineering (TMH)</div>
+    <div class="bk pri">Chattopadhyay &amp; Rakshit — Electronics Fundamentals &amp; Applications (New Age International)</div>
+    <div class="bk">Chakrabarti &amp; Debnath — Basic Electrical and Electronics Engineering (McGraw Hill)</div>
+  </div>
+</div></div>
+</div>
+
+</div><!-- end theory grid -->
+
+<!-- ═══════════════ LABS ═══════════════ -->
+<p class="sec-head" id="labs-sec">🔬 Laboratory Subjects</p>
+<div class="grid" id="labsGrid">
+
+<!-- ═══ OS LAB ═══ -->
+<div class="sc" data-type="lab" data-name="operating system lab am391 linux shell semaphore thread shared memory pipe">
+<div class="sc-hd" onclick="toggleCard(this.parentElement)">
+  <div class="sc-hl">
+    <div class="sc-code" style="color:#818cf8">AM391</div>
+    <div class="sc-name">Operating System Lab</div>
+    <div class="sc-meta">
+      <span class="bg bg-cr">1.5 Credits</span>
+      <span class="bg bg-lb">Lab · 3P/week</span>
+    </div>
+  </div>
+  <div class="chev">▾</div>
+</div>
+<div class="sc-body"><div class="sc-bi">
+  <div class="prereq"><strong>Platform:</strong> Linux (Ubuntu) · Shell: bash · Language: C</div>
+  <div class="mod-lbl">🧪 Lab Experiments</div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">01</div>
+      <div class="mod-title">Essential Linux Commands</div>
+      <div class="mod-hr">9P</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>File &amp; Directory Commands: cd, cp, mv, rm, mkdir, cat, ls, more, less</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Process Commands: kill, ps, who, sleep, grep, find, sort</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Pipes (pipe, popen, pclose) &amp; Named Pipes (FIFOs)</span></div>
+      <div class="ti"><div class="dot"></div><span>File Commands: wc, cut, expr, factor, touch, banner</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">02</div>
+      <div class="mod-title">Shell Programming</div>
+      <div class="mod-hr">6P</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Creating &amp; Running Shell Scripts, Variables &amp; Data Types in Shell</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Conditional Statements (if-elif-else), Loops (for, while, until)</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Shell Functions, Control Structures, String Operations</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">03</div>
+      <div class="mod-title">Process Management</div>
+      <div class="mod-hr">3P</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>fork(), exec(), wait() — Process Creation &amp; Image Replacement</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Duplicating a Process Image (dup, dup2)</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">04</div>
+      <div class="mod-title">Semaphores</div>
+      <div class="mod-hr">3P</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>semget(), semop(), semaphore_p(), semaphore_v() — Producer-Consumer using Semaphore</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">05</div>
+      <div class="mod-title">POSIX Threads (pthreads)</div>
+      <div class="mod-hr">6P</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>pthread_create, pthread_join, pthread_exit, pthread_attr_init, pthread_cancel</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Multithreaded Programs: Shared Data &amp; Synchronization</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">06</div>
+      <div class="mod-title">Shared Memory</div>
+      <div class="mod-hr">9P</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>shmget, shmat, shmdt, shmctl — Create, Attach, Read/Write, Detach, Delete</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Producer-Consumer using Shared Memory</span></div>
+    </div></div>
+  </div>
+
+  <div class="bk-sec">
+    <div class="bk-lbl">📖 Reference</div>
+    <div class="bk pri">Kanetkar — UNIX Shell Programming (BPB Publications)</div>
+    <div class="bk">W. Richard Stevens — UNIX Network Programming (Prentice Hall)</div>
+  </div>
+</div></div>
+</div>
+
+<!-- ═══ DAA LAB ═══ -->
+<div class="sc" data-type="lab" data-name="daa lab am392 algorithm implementation sorting graph">
+<div class="sc-hd" onclick="toggleCard(this.parentElement)">
+  <div class="sc-hl">
+    <div class="sc-code" style="color:#67e8f9">AM392</div>
+    <div class="sc-name">Design &amp; Analysis of Algorithm Lab</div>
+    <div class="sc-meta">
+      <span class="bg bg-cr">1.5 Credits</span>
+      <span class="bg bg-lb">Lab · 3P/week</span>
+    </div>
+  </div>
+  <div class="chev">▾</div>
+</div>
+<div class="sc-body"><div class="sc-bi">
+  <div class="prereq"><strong>Language:</strong> C / C++ / Java / Python (as per instructor)</div>
+  <div class="mod-lbl">🧪 Lab Experiments</div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">A</div>
+      <div class="mod-title">Divide &amp; Conquer</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Matrix Multiplication (Strassen's Algorithm)</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Merge Sort, Quick Sort — Time Complexity Analysis</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">B</div>
+      <div class="mod-title">Dynamic Programming</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Matrix Chain Multiplication</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>0/1 Knapsack Problem (DP version)</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Travelling Salesman Problem (DP)</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">C-D</div>
+      <div class="mod-title">Backtracking &amp; Branch &amp; Bound</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>N-Queens Problem (Backtracking)</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Branch &amp; Bound Techniques</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">E</div>
+      <div class="mod-title">Greedy Methods</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Fractional Knapsack Problem</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Job Sequencing Problem with Deadline</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">F-H</div>
+      <div class="mod-title">String Matching &amp; Graph Algorithms</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>KMP String Matching Algorithm</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Dijkstra's Algorithm for Single Source Shortest Path</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Floyd-Warshall All-Pair Shortest Path</span></div>
+      <div class="ti"><div class="dot"></div><span>Implementation of Real-Life Trendy Problem</span></div>
+    </div></div>
+  </div>
+</div></div>
+</div>
+
+<!-- ═══ JAVA LAB ═══ -->
+<div class="sc" data-type="lab" data-name="java lab am393 oops inheritance exception multithreading applet string">
+<div class="sc-hd" onclick="toggleCard(this.parentElement)">
+  <div class="sc-hl">
+    <div class="sc-code" style="color:#34d399">AM393</div>
+    <div class="sc-name">OOP using Java Lab</div>
+    <div class="sc-meta">
+      <span class="bg bg-cr">1.5 Credits</span>
+      <span class="bg bg-lb">Lab · 3P/week</span>
+    </div>
+  </div>
+  <div class="chev">▾</div>
+</div>
+<div class="sc-body"><div class="sc-bi">
+  <div class="prereq"><strong>Tools:</strong> JDK 17+ · Eclipse / IntelliJ IDEA · javac &amp; java commands</div>
+  <div class="mod-lbl">🧪 Lab Experiments</div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">01</div>
+      <div class="mod-title">Java Basics — Class, Object, Constructor</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Programs on Operators, Control Statements, Loops, Arrays</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Programs on Class, Object, Method, Access Specifiers</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Constructor &amp; Method Overloading, this keyword</span></div>
+      <div class="ti"><div class="dot"></div><span>Call by Value vs. Reference, Static Variables, Inner Classes</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">02</div>
+      <div class="mod-title">String Handling &amp; I/O Programs</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>String class methods: charAt, compareTo, equals, indexOf, substring, length, valueOf</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>StringBuffer methods: append, insert, delete, reverse</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>BufferedReader &amp; Scanner for User Input</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">03</div>
+      <div class="mod-title">Inheritance, Interface &amp; Packages</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Simple, Multilevel &amp; Hierarchical Inheritance — super keyword</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Method Overriding, Abstract Classes, Multiple Inheritance via Interface</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>User-Defined Packages, Protected Access Specifier</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">04</div>
+      <div class="mod-title">Exception Handling, Threads &amp; Applet</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>try-catch-finally, throw, throws, User-Defined Exception</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Creating Threads (extend Thread / implement Runnable), Thread Priorities</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="htag">HOT</span><span>Simple Applet: Display Message, GUI-based Applet, Applet with Parameters</span></div>
+    </div></div>
+  </div>
+</div></div>
+</div>
+
+<!-- ═══ PYTHON WORKSHOP ═══ -->
+<div class="sc" data-type="skill" data-name="it workshop python am394 numpy list dictionary file handling functions">
+<div class="sc-hd" onclick="toggleCard(this.parentElement)">
+  <div class="sc-hl">
+    <div class="sc-code" style="color:#fcd34d">AM394</div>
+    <div class="sc-name">IT Workshop — Python</div>
+    <div class="sc-meta">
+      <span class="bg bg-cr">1.5 Credits</span>
+      <span class="bg bg-sk">Skill Enhancement · 3P/week</span>
+    </div>
+  </div>
+  <div class="chev">▾</div>
+</div>
+<div class="sc-body"><div class="sc-bi">
+  <div class="prereq"><strong>Tools:</strong> Python 3.x · VS Code / Jupyter Notebook · NumPy</div>
+  <div class="mod-lbl">🧪 Lab Topics</div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">01</div>
+      <div class="mod-title">Python Basics</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Variables, Data Types, Operators — int, float, str, bool, type conversion</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Conditional Statements: if, elif, else + While &amp; For Loops</span></div>
+      <div class="ti"><div class="dot"></div><span>Python Syntax: Colon &amp; Indentation Rules</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">02</div>
+      <div class="mod-title">Functions &amp; Data Structures</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Defining Functions, Default Arguments, *args &amp; **kwargs</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Lists: Indexing, Slicing, List Methods (append, pop, sort, reverse)</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Dictionaries: Key-Value Pairs, dict Methods, Nested Dicts</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Sets: Union, Intersection, Difference, Symmetric Difference</span></div>
+      <div class="ti"><div class="dot"></div><span>String Functions: upper, lower, split, join, strip, replace</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">03</div>
+      <div class="mod-title">File Handling &amp; NumPy</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>File Handling: open, read, write, append — with 'with' statement</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>NumPy Arrays: Creation, Slicing, Stacking, Numerical Operations</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>NumPy: reshape, transpose, dot product, linspace, arange</span></div>
+      <div class="ti"><div class="dot"></div><span>Mini Project: Tic-Tac-Toe or Finding Puzzle in Python</span></div>
+    </div></div>
+  </div>
+
+  <div class="bk-sec">
+    <div class="bk-lbl">📖 Resources</div>
+    <div class="bk pri">Official Python Docs: docs.python.org ← Free &amp; Best</div>
+    <div class="bk">NumPy Quickstart: numpy.org/doc</div>
+  </div>
+</div></div>
+</div>
+
+<!-- ═══ EEE LAB ═══ -->
+<div class="sc" data-type="lab" data-name="electrical electronics lab ec am391 diode transistor op-amp transformer kvl kcl">
+<div class="sc-hd" onclick="toggleCard(this.parentElement)">
+  <div class="sc-hl">
+    <div class="sc-code" style="color:#fcd34d">EC(AM)391</div>
+    <div class="sc-name">EEE Lab (Electrical &amp; Electronics)</div>
+    <div class="sc-meta">
+      <span class="bg bg-cr">1.5 Credits</span>
+      <span class="bg bg-lb">Lab · 3P/week</span>
+    </div>
+  </div>
+  <div class="chev">▾</div>
+</div>
+<div class="sc-body"><div class="sc-bi">
+  <div class="prereq"><strong>Equipment:</strong> Multimeter, Oscilloscope, Function Generator, Bread Board, DC Power Supply</div>
+  <div class="mod-lbl">🧪 Experiments (12 Total)</div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">1-2</div>
+      <div class="mod-title">Component &amp; Instrument Familiarization</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span>Identify: Resistor, Capacitor, Inductor, Diode, Transistor, IC741</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span>Use: Multimeter, Oscilloscope, Signal Generator safely</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">3</div>
+      <div class="mod-title">Verification of KVL &amp; KCL</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Kirchhoff's Voltage Law — Measure loop voltages, verify sum = 0</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Kirchhoff's Current Law — Measure node currents, verify sum = 0</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">4-5</div>
+      <div class="mod-title">DC Motor &amp; Transformer Tests</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span>Forward &amp; Reverse Control of DC Shunt Motor</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Transformer OC &amp; SC Tests — Calculate Efficiency &amp; Losses</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">6-8</div>
+      <div class="mod-title">Semiconductor Device Characteristics</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>PN Junction Diode V-I Characteristics (Forward &amp; Reverse Bias)</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Zener Diode Characteristics &amp; Voltage Regulation</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="htag">HOT</span><span>BJT CE Mode: Input &amp; Output Characteristics</span></div>
+    </div></div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-hd" onclick="toggleMod(this.parentElement)">
+      <div class="mod-num">9-12</div>
+      <div class="mod-title">Op-Amp (IC741) Experiments</div>
+      <div class="mod-cv">▾</div>
+    </div>
+    <div class="mod-body"><div class="topics">
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>Find Offset Voltage, Offset Current &amp; Bias Current of IC741</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="mtag">MUST</span><span>CMRR &amp; Slew Rate Determination of IC741</span></div>
+      <div class="ti imp"><span class="star">⭐</span><span class="htag">HOT</span><span>Inverting &amp; Non-Inverting Gain Measurement + Adder / Subtractor Circuit</span></div>
+      <div class="ti"><div class="dot"></div><span>Extramural Experiment (as assigned)</span></div>
+    </div></div>
+  </div>
+</div></div>
+</div>
+
+</div><!-- end labs grid -->
+
+<div class="no-res" id="noRes"><div class="no-res-icon">😕</div><p>No subjects match your search. Try different keywords!</p></div>
+
+<!-- ═══════════════ EXAM TIPS ═══════════════ -->
+<p class="sec-head" id="tips-sec">💡 Smart Study Tips for 3rd Sem</p>
+<div class="tips-grid">
+  <div class="tip-card t1">
+    <div class="tip-icon">🧮</div>
+    <div class="tip-title">OS &amp; DAA: Solve Numericals Daily</div>
+    <div class="tip-body">Page replacement, disk scheduling, and scheduling algorithm numerical problems appear every exam. Practice 5 numericals/day for each algorithm. Write the steps, not just the answer.</div>
+  </div>
+  <div class="tip-card t2">
+    <div class="tip-icon">☕</div>
+    <div class="tip-title">Java: Code Daily, Don't Just Read</div>
+    <div class="tip-body">Java OOP is 90% hands-on. Write inheritance programs, thread programs, and exception programs yourself. Read code, write it, break it, fix it. That's how Java sticks.</div>
+  </div>
+  <div class="tip-card t3">
+    <div class="tip-icon">📐</div>
+    <div class="tip-title">Discrete Maths: Understand, Don't Memorize</div>
+    <div class="tip-body">Graph theory and group theory questions can be solved logically if you understand definitions. Draw graphs, build truth tables by hand. Formulae follow from understanding.</div>
+  </div>
+  <div class="tip-card t4">
+    <div class="tip-icon">⚡</div>
+    <div class="tip-title">EEE: Draw Circuits &amp; Solve Problems</div>
+    <div class="tip-body">For AC circuits and Op-Amp problems, draw the phasor diagram or circuit first. Nodal &amp; mesh analysis problems follow a fixed template — master that template for 80% of numericals.</div>
+  </div>
+</div>
+
+<!-- ═══════════════ CHECKLIST ═══════════════ -->
+<p class="sec-head" id="check-sec">✅ Topic Checklist — Track Your Progress</p>
+<div class="checklist" id="checklistEl">
+  <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box"></div><span class="chk-text">OS — CPU Scheduling Algorithms (FCFS, SJF, RR)</span></div>
+  <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box"></div><span class="chk-text">OS — Deadlock: Prevention, Avoidance (Banker's), Detection</span></div>
+  <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box"></div><span class="chk-text">OS — Page Replacement: FIFO, LRU, Optimal (numericals)</span></div>
+  <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box"></div><span class="chk-text">OS — Disk Scheduling: SSTF, SCAN, C-SCAN (numericals)</span></div>
+  <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box"></div><span class="chk-text">DAA — Big-O, Ω, Θ Notation with examples</span></div>
+  <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box"></div><span class="chk-text">DAA — Dynamic Programming (Knapsack, Matrix Chain)</span></div>
+  <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box"></div><span class="chk-text">DAA — Dijkstra's &amp; Floyd-Warshall (with numericals)</span></div>
+  <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box"></div><span class="chk-text">DAA — NP-Completeness: P, NP, NP-Hard concepts</span></div>
+  <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box"></div><span class="chk-text">Java — Inheritance + Method Overriding programs</span></div>
+  <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box"></div><span class="chk-text">Java — Exception Handling programs (custom exception)</span></div>
+  <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box"></div><span class="chk-text">Java — Multithreading programs (Thread lifecycle)</span></div>
+  <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box"></div><span class="chk-text">Java — Interface &amp; Abstract class programs</span></div>
+  <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box"></div><span class="chk-text">DM — Truth Tables, DNF &amp; CNF conversion</span></div>
+  <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box"></div><span class="chk-text">DM — Graph Theory: MST using Kruskal's &amp; Prim's</span></div>
+  <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box"></div><span class="chk-text">DM — Group Theory: Lagrange's Theorem</span></div>
+  <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box"></div><span class="chk-text">EEE — KVL, KCL problem solving</span></div>
+  <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box"></div><span class="chk-text">EEE — Diode Rectifier circuit numericals</span></div>
+  <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box"></div><span class="chk-text">EEE — Op-Amp circuit analysis (Inverting/Non-inverting)</span></div>
+  <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box"></div><span class="chk-text">OS Lab — Shell scripts (if/else, loops, functions)</span></div>
+  <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box"></div><span class="chk-text">Python — NumPy array operations</span></div>
+</div>
+
+</div><!-- end main -->
+
+<footer>📚 CSE-AIML · 2nd Year 3rd Semester Complete Syllabus · R-25 Curriculum &nbsp;·&nbsp; ⭐ = Exam Important &nbsp;·&nbsp; Built for the Topper of AIML 🏆</footer>
+
+<script>
+// ── TOGGLE CARD ──
+function toggleCard(el){el.classList.toggle('open');}
+function toggleMod(el){el.classList.toggle('open');}
+
+// ── EXPAND/COLLAPSE ALL ──
+function toggleAll(open){
+  document.querySelectorAll('.sc').forEach(c=>{open?c.classList.add('open'):c.classList.remove('open');});
+  document.querySelectorAll('.mod').forEach(m=>{open?m.classList.add('open'):m.classList.remove('open');});
+}
+
+// ── EXPAND IMPORTANT ONLY ──
+function expandImportant(){
+  toggleAll(false);
+  document.querySelectorAll('.sc').forEach(c=>{
+    c.classList.add('open');
+    c.querySelectorAll('.mod').forEach(m=>{
+      if(m.querySelector('.ti.imp')) m.classList.add('open');
+    });
+  });
+}
+
+// ── FILTER BY TYPE ──
+function filter(type,btn){
+  document.querySelectorAll('.tp').forEach(p=>p.classList.remove('on'));
+  btn.classList.add('on');
+  let shown=0;
+  document.querySelectorAll('.sc').forEach(card=>{
+    const show=(type==='all'||card.dataset.type===type);
+    card.style.display=show?'':'none';
+    if(show)shown++;
+  });
+  document.getElementById('noRes').style.display=shown===0?'block':'none';
+}
+
+// ── SEARCH ──
+document.getElementById('sInput').addEventListener('input',function(){
+  const q=this.value.toLowerCase().trim();
+  let shown=0;
+  document.querySelectorAll('.sc').forEach(card=>{
+    // Remove old marks
+    card.querySelectorAll('mark').forEach(m=>m.replaceWith(document.createTextNode(m.textContent)));
+    const text=card.dataset.name+' '+(card.querySelector('.sc-name')?.textContent||'')+' '+
+      Array.from(card.querySelectorAll('.mod-title,.ti span:last-child')).map(e=>e.textContent).join(' ');
+    if(!q||text.toLowerCase().includes(q)){
+      card.style.display='';shown++;
+      if(q){
+        card.classList.add('open');
+        card.querySelectorAll('.mod').forEach(m=>{
+          const mt=Array.from(m.querySelectorAll('.mod-title,.ti span:last-child')).map(e=>e.textContent).join(' ').toLowerCase();
+          if(mt.includes(q))m.classList.add('open');
+        });
+        // Highlight in visible text spans
+        card.querySelectorAll('.mod-title,.ti span:last-child,.card-name').forEach(el=>{
+          const re=new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+          if(re.test(el.textContent)){
+            el.innerHTML=el.textContent.replace(re,'<mark>$1</mark>');
+          }
+        });
+      }
+    } else {
+      card.style.display='none';
+    }
+  });
+  document.getElementById('noRes').style.display=shown===0&&q?'block':'none';
+});
+
+// ── CHECKLIST ──
+const DONE_KEY='sem3_checklist';
+function loadChecklist(){
+  try{
+    const saved=JSON.parse(localStorage.getItem(DONE_KEY)||'[]');
+    document.querySelectorAll('.chk-item').forEach((el,i)=>{
+      if(saved.includes(i))el.classList.add('done');
+    });
+  }catch(e){}
+  updateProgress();
+}
+function saveChecklist(){
+  const done=[];
+  document.querySelectorAll('.chk-item').forEach((el,i)=>{if(el.classList.contains('done'))done.push(i);});
+  try{localStorage.setItem(DONE_KEY,JSON.stringify(done));}catch(e){}
+}
+function toggleCheck(el){
+  el.classList.toggle('done');
+  el.querySelector('.chk-box').textContent=el.classList.contains('done')?'✓':'';
+  saveChecklist();
+  updateProgress();
+}
+function updateProgress(){
+  const all=document.querySelectorAll('.chk-item').length;
+  const done=document.querySelectorAll('.chk-item.done').length;
+  document.getElementById('pLabel').textContent=done+'/'+all+' done';
+  document.getElementById('pFill').style.width=(done/all*100)+'%';
+}
+function scrollTo(id){document.querySelector(id)?.scrollIntoView({behavior:'smooth',block:'start'});}
+
+// ── QUICK NAV SCROLL ──
+window.scrollTo=function(id){document.querySelector(id)?.scrollIntoView({behavior:'smooth'});};
+
+loadChecklist();
+
+/* ══════════════════════════════════════
+   3D LANDING — THREE.JS UNIVERSE
+══════════════════════════════════════ */
+(function(){
+  'use strict';
+
+  /* ── Animated counters ── */
+  function animCount(el, target, suffix, duration){
+    let start=0, step=target/60, frame=duration/60;
+    let iv=setInterval(()=>{
+      start+=step;
+      if(start>=target){start=target;clearInterval(iv);}
+      el.textContent=Math.round(start)+(suffix||'');
+    }, frame);
+  }
+  setTimeout(()=>{
+    animCount(document.getElementById('cnt1'),10,'',800);
+    animCount(document.getElementById('cnt2'),22.5,'',1000);
+    animCount(document.getElementById('cnt3'),36,'',1100);
+    animCount(document.getElementById('cnt4'),80,'+',1200);
+  },600);
+
+  /* ── Enter transition ── */
+  window.enterSyllabus=function(){
+    const l=document.getElementById('landing');
+    l.classList.add('hide');
+    document.body.classList.remove('locked');
+    setTimeout(()=>{ l.style.display='none'; },950);
+  };
+
+  /* ── Lock scroll while on landing ── */
+  document.body.classList.add('locked');
+
+  /* ── Load Three.js from CDN and build scene ── */
+  const s=document.createElement('script');
+  s.src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+  s.onload=buildScene;
+  s.onerror=()=>console.warn('Three.js CDN unavailable — fallback CSS orbs active');
+  document.head.appendChild(s);
+
+  function buildScene(){
+    const THREE=window.THREE;
+    const landing=document.getElementById('landing');
+
+    /* renderer */
+    const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+    renderer.setSize(window.innerWidth,window.innerHeight);
+    renderer.setClearColor(0x04080f,1);
+    landing.insertBefore(renderer.domElement, landing.firstChild);
+
+    /* scene & camera */
+    const scene=new THREE.Scene();
+    const camera=new THREE.PerspectiveCamera(60,window.innerWidth/window.innerHeight,.1,2000);
+    camera.position.set(0,0,80);
+
+    /* ── FOG ── */
+    scene.fog=new THREE.FogExp2(0x04080f,0.007);
+
+    /* ── STAR FIELD ── */
+    (function(){
+      const geo=new THREE.BufferGeometry();
+      const N=6000;
+      const pos=new Float32Array(N*3);
+      const col=new Float32Array(N*3);
+      const starColors=[[.5,.5,1],[.4,.85,1],[.7,.5,1],[.3,1,.9],[1,1,1]];
+      for(let i=0;i<N;i++){
+        pos[i*3]=(Math.random()-0.5)*800;
+        pos[i*3+1]=(Math.random()-0.5)*800;
+        pos[i*3+2]=(Math.random()-0.5)*800;
+        const c=starColors[Math.floor(Math.random()*starColors.length)];
+        col[i*3]=c[0];col[i*3+1]=c[1];col[i*3+2]=c[2];
+      }
+      geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
+      geo.setAttribute('color',new THREE.BufferAttribute(col,3));
+      const mat=new THREE.PointsMaterial({size:.6,vertexColors:true,transparent:true,opacity:.85});
+      scene.add(new THREE.Points(geo,mat));
+    })();
+
+    /* ── FLOATING BOOKS ── */
+    const books=[];
+    (function(){
+      const bookData=[
+        {color:0x6366f1,label:'OS'},{color:0x22d3ee,label:'DAA'},
+        {color:0x10b981,label:'Java'},{color:0xa855f7,label:'DM'},
+        {color:0xf59e0b,label:'EEE'},{color:0xf43f5e,label:'LAB'},
+        {color:0x06b6d4,label:'Algo'},{color:0x8b5cf6,label:'Sets'},
+      ];
+      bookData.forEach((bd,i)=>{
+        const g=new THREE.Group();
+        /* book body */
+        const body=new THREE.Mesh(
+          new THREE.BoxGeometry(6,8,1),
+          new THREE.MeshPhongMaterial({color:bd.color,emissive:bd.color,emissiveIntensity:.15,shininess:80})
+        );
+        /* spine */
+        const spine=new THREE.Mesh(
+          new THREE.BoxGeometry(.8,8,1.05),
+          new THREE.MeshPhongMaterial({color:darken(bd.color,.7)})
+        );
+        spine.position.x=-3.4;
+        /* pages edge */
+        const pages=new THREE.Mesh(
+          new THREE.BoxGeometry(5,7.6,.8),
+          new THREE.MeshPhongMaterial({color:0xd1d5db})
+        );
+        pages.position.set(.4,0,.92);
+        g.add(body,spine,pages);
+
+        /* place in a wide orbit */
+        const angle=((i/bookData.length)*Math.PI*2);
+        const r=30+Math.random()*15;
+        g.position.set(
+          Math.cos(angle)*r, (Math.random()-0.5)*25, Math.sin(angle)*r-20
+        );
+        g.rotation.set(Math.random()*.5,Math.random()*Math.PI*2,Math.random()*.3);
+        g.userData={
+          rotSpd:(.005+Math.random()*.008)*(Math.random()<.5?1:-1),
+          floatSpd:.4+Math.random()*.4,
+          floatAmp:1.5+Math.random()*1.5,
+          initY:g.position.y,
+          phase:Math.random()*Math.PI*2,
+          orbitR:r,
+          orbitAngle:angle,
+          orbitSpd:(.003+Math.random()*.002)*(Math.random()<.5?1:-1),
+        };
+        scene.add(g);
+        books.push(g);
+      });
+    })();
+
+    function darken(hex,f){
+      const r=((hex>>16)&0xff)*f,g=((hex>>8)&0xff)*f,b=(hex&0xff)*f;
+      return (Math.round(r)<<16)|(Math.round(g)<<8)|Math.round(b);
+    }
+
+    /* ── GLOWING ORBS (knowledge bubbles) ── */
+    const orbs3d=[];
+    (function(){
+      const orbColors=[0x6366f1,0x22d3ee,0xa855f7,0x10b981,0xf59e0b];
+      for(let i=0;i<14;i++){
+        const r=3+Math.random()*5;
+        const m=new THREE.MeshPhongMaterial({
+          color:orbColors[i%orbColors.length],
+          emissive:orbColors[i%orbColors.length],
+          emissiveIntensity:.35,
+          transparent:true,opacity:.55,shininess:100
+        });
+        const mesh=new THREE.Mesh(new THREE.SphereGeometry(r,32,32),m);
+        mesh.position.set(
+          (Math.random()-0.5)*120,(Math.random()-0.5)*60,(Math.random()-0.5)*60-10
+        );
+        mesh.userData={
+          floatSpd:.3+Math.random()*.4,floatAmp:3+Math.random()*4,
+          initY:mesh.position.y,phase:Math.random()*Math.PI*2,
+          rotSpd:(.003+Math.random()*.004)*(Math.random()<.5?1:-1),
+          pulseSpd:.8+Math.random()*.6,
+        };
+        scene.add(mesh);
+        orbs3d.push(mesh);
+      }
+    })();
+
+    /* ── PARTICLE STREAM (magical dust) ── */
+    const dustGeo=new THREE.BufferGeometry();
+    const DUST=3000;
+    const dpos=new Float32Array(DUST*3);
+    const dvel=new Float32Array(DUST*3);
+    for(let i=0;i<DUST;i++){
+      dpos[i*3]=(Math.random()-0.5)*200;
+      dpos[i*3+1]=(Math.random()-0.5)*200;
+      dpos[i*3+2]=(Math.random()-0.5)*100-10;
+      dvel[i*3]=(Math.random()-0.5)*.04;
+      dvel[i*3+1]=.02+Math.random()*.04;
+      dvel[i*3+2]=(Math.random()-0.5)*.02;
+    }
+    dustGeo.setAttribute('position',new THREE.BufferAttribute(dpos,3));
+    const dustMat=new THREE.PointsMaterial({
+      size:.35,color:0x8b9fd4,transparent:true,opacity:.6
+    });
+    const dust=new THREE.Points(dustGeo,dustMat);
+    scene.add(dust);
+
+    /* ── FORMULA PLANES (text quads) ── */
+    (function(){
+      const formulae=['E=mc²','O(n log n)','∑xᵢ','∫f(x)dx','P≠NP?','JVM','SQL','∀x∃y','KVL','FFT'];
+      formulae.forEach((txt,i)=>{
+        const cv=document.createElement('canvas');cv.width=256;cv.height=80;
+        const ctx2=cv.getContext('2d');
+        ctx2.fillStyle='rgba(99,102,241,.0)';ctx2.fillRect(0,0,256,80);
+        const grad=ctx2.createLinearGradient(0,0,256,0);
+        grad.addColorStop(0,'rgba(99,102,241,.0)');
+        grad.addColorStop(.3,'rgba(139,92,246,.85)');
+        grad.addColorStop(.7,'rgba(34,211,238,.85)');
+        grad.addColorStop(1,'rgba(99,102,241,.0)');
+        ctx2.font='bold 32px monospace';
+        ctx2.fillStyle=grad;ctx2.textAlign='center';ctx2.textBaseline='middle';
+        ctx2.fillText(txt,128,40);
+        const tex=new THREE.CanvasTexture(cv);
+        const plane=new THREE.Mesh(
+          new THREE.PlaneGeometry(12,3.5),
+          new THREE.MeshBasicMaterial({map:tex,transparent:true,depthWrite:false,side:THREE.DoubleSide})
+        );
+        const ang=(i/formulae.length)*Math.PI*2;
+        const rad=50+Math.random()*20;
+        plane.position.set(Math.cos(ang)*rad,(Math.random()-0.5)*30,Math.sin(ang)*rad-15);
+        plane.userData={floatSpd:.25+Math.random()*.3,floatAmp:2+Math.random()*2,initY:plane.position.y,phase:Math.random()*Math.PI*2,rotSpd:.003};
+        scene.add(plane);
+      });
+    })();
+
+    /* ── LIGHTS ── */
+    scene.add(new THREE.AmbientLight(0x1a1a3a,1));
+    const pt1=new THREE.PointLight(0x6366f1,3,120);pt1.position.set(0,20,30);scene.add(pt1);
+    const pt2=new THREE.PointLight(0x22d3ee,2,100);pt2.position.set(-50,-10,0);scene.add(pt2);
+    const pt3=new THREE.PointLight(0xa855f7,2,80);pt3.position.set(50,10,-20);scene.add(pt3);
+    const pt4=new THREE.PointLight(0x10b981,1.5,80);pt4.position.set(0,-30,20);scene.add(pt4);
+
+    /* ── MOUSE PARALLAX ── */
+    let mx=0,my=0;
+    window.addEventListener('mousemove',e=>{
+      mx=(e.clientX/window.innerWidth-.5)*2;
+      my=(e.clientY/window.innerHeight-.5)*2;
+    },{passive:true});
+
+    /* ── RESIZE ── */
+    window.addEventListener('resize',()=>{
+      camera.aspect=window.innerWidth/window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth,window.innerHeight);
+    });
+
+    /* ── ANIMATION LOOP ── */
+    let t=0;
+    function animate(){
+      if(!document.getElementById('landing') || document.getElementById('landing').style.display==='none') return;
+      requestAnimationFrame(animate);
+      t+=.012;
+
+      /* Camera gentle sway */
+      camera.position.x+=(mx*8-camera.position.x)*.025;
+      camera.position.y+=(-my*6-camera.position.y)*.025;
+      camera.lookAt(0,0,0);
+
+      /* Books orbit + float + spin */
+      books.forEach(b=>{
+        const ud=b.userData;
+        ud.orbitAngle+=ud.orbitSpd;
+        b.position.x=Math.cos(ud.orbitAngle)*ud.orbitR;
+        b.position.z=Math.sin(ud.orbitAngle)*ud.orbitR-20;
+        b.position.y=ud.initY+Math.sin(t*ud.floatSpd+ud.phase)*ud.floatAmp;
+        b.rotation.y+=ud.rotSpd;
+        b.rotation.z=Math.sin(t*.4+ud.phase)*.08;
+      });
+
+      /* Orbs pulse + float */
+      orbs3d.forEach(o=>{
+        const ud=o.userData;
+        o.position.y=ud.initY+Math.sin(t*ud.floatSpd+ud.phase)*ud.floatAmp;
+        const s=1+Math.sin(t*ud.pulseSpd+ud.phase)*.07;
+        o.scale.set(s,s,s);
+        o.rotation.y+=ud.rotSpd;
+        o.material.emissiveIntensity=.2+Math.sin(t*ud.pulseSpd+ud.phase)*.2;
+      });
+
+      /* Dust drift upward, wrap */
+      const dp=dustGeo.attributes.position.array;
+      for(let i=0;i<DUST;i++){
+        dp[i*3]  +=dvel[i*3];
+        dp[i*3+1]+=dvel[i*3+1];
+        dp[i*3+2]+=dvel[i*3+2];
+        if(dp[i*3+1]>100){dp[i*3]=(Math.random()-0.5)*200;dp[i*3+1]=-100;dp[i*3+2]=(Math.random()-0.5)*100-10;}
+      }
+      dustGeo.attributes.position.needsUpdate=true;
+
+      /* Light pulse */
+      pt1.intensity=2.5+Math.sin(t*.7)*.8;
+      pt2.intensity=1.8+Math.sin(t*.5+1)*.6;
+      pt3.intensity=1.8+Math.sin(t*.6+2)*.6;
+
+      /* Star field slow rotation */
+      scene.children[0].rotation.y=t*.0008;
+
+      renderer.render(scene,camera);
+    }
+    animate();
+  }
+})();
+</script>
+
+<!-- Watermark -->
+<div class="watermark">✦ created with dedication ✦</div>
+
+</body>
+</html>
